@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  get "/all_available_products" => "products#all_products"
-  get "/first_products" => "products#first"
+  get "/products" => "products#index"
+  get "/merchandise" => "products#show"
+  get "/merchandise/:id" => "products#show"
+
 end

@@ -1,11 +1,13 @@
 class ProductsController < ApplicationController
-  def all_products
+  def index
     @products = Product.all
-    render "products.json.jbuilder"
+    render "index.json.jbuilder"
   end
 
-  def first
-    @product1 = Product.first
-    render "product.json.jbuilder"
+  def show
+    id = params["id"]
+    @product = Product.find_by(id: id)
+    render "show.json.jbuilder"
   end
+
 end
