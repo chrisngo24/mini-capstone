@@ -34,5 +34,4 @@ class ProductsController < ApplicationController
     @product.destroy
     render json: {message: "Product Successfully REMOVED"}
   end
-
 end
