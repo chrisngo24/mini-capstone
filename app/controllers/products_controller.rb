@@ -10,8 +10,11 @@ class ProductsController < ApplicationController
       price: params[:price], 
       description: params[:description]
     )
-    @product.save
-    render "show.json.jbuilder"
+    if @product.save
+      render "show.json.jbuilder"
+    else
+      render json: {errors: @product.errors.full_messages}, status: 422
+    end
   end
     
   def show
@@ -25,8 +28,12 @@ class ProductsController < ApplicationController
     @product.name = params[:name] || @product.name 
     @product.price = params[:price] || @product.price
     @product.description = params[:description] || @product.description
-    @product.save
-    render "show.json.jbuilder"
+    
+    if @product.save
+      render "show.json.jbuilder"
+    else
+      render json: {errors: @product.errors.full_messages}, status: 406
+    end
   end
 
   def destroy
