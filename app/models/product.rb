@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   validates :price, numericality: { greater_than: 0 }
   validates :description, presence: true
   validates :description, length: {in: 10..500 }
+  has_many :orders
 
   belongs_to :supplier
     # def supplier
