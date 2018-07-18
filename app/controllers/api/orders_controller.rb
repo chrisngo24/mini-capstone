@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class Api::OrdersController < ApplicationController
   before_action :authenticate_user
 
   def index
@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    product = Product.find_by(id: params[:product_id])
+    product = CartedProduct.where(status: "carted")
     quantity = params[:quantity].to_i
     calculated_subtotal = product.price * quantity
     calculated_tax = product.tax * quantity
